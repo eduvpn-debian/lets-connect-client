@@ -3,6 +3,15 @@
 
 export PYBUILD_NAME=eduvpn-client
 
+override_dh_auto_configure:
+	cp setup.py setup.py.backup
+	cp setup_letsconnect.py setup.py
+	dh_auto_configure
+
+override_dh_auto_clean:
+	cp setup.py.backup setup.py || true
+	dh_auto_clean
+
 # we remove some things since we add them to the common package
 override_dh_auto_install:
 	dh_auto_install
