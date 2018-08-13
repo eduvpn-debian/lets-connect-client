@@ -42,6 +42,7 @@ Vcs-Browser: https://github.com/eduvpn-debian/python-eduvpn-client
 Testsuite: autopkgtest-pkg-python
 
 Package: lets-connect-client-data
+Conflicts: eduvpn-client-data
 Architecture: all
 Depends:
  ${misc:Depends}
@@ -55,6 +56,7 @@ Description: VPN client for educational networks (data files)
 
 
 Package: python-lets-connect-client
+Conflicts: python-eduvpn-client
 Architecture: all
 Depends:
  ${python:Depends},
@@ -64,7 +66,6 @@ Depends:
  python-dbus,
  gir1.2-gtk-3.0,
  gir1.2-notify-0.7
-Suggests: lets-connect-client-doc
 Description: eduVPN client (Python 2)
  EduVPN enables students, employees and researchers to connect securely and
  encrypted to the Internet from any standard device. EduVPN integrates with
@@ -74,6 +75,7 @@ Description: eduVPN client (Python 2)
  This package installs the library for Python 2.
 
 Package: python3-lets-connect-client
+Conflicts: python3-eduvpn-client
 Architecture: all
 Depends:
  ${python3:Depends},
@@ -83,7 +85,6 @@ Depends:
  python3-dbus,
  gir1.2-gtk-3.0,
  gir1.2-notify-0.7
-Suggests: lets-connect-client-doc
 Description: eduVPN client (Python 3)
  EduVPN enables students, employees and researchers to connect securely and
  encrypted to the Internet from any standard device. EduVPN integrates with
@@ -92,19 +93,8 @@ Description: eduVPN client (Python 3)
  .
  This package installs the library for Python 3.
 
-Package: lets-connect-client-doc
-Architecture: all
-Section: doc
-Depends: ${sphinxdoc:Depends}, ${misc:Depends}
-Description: eduVPN client (common documentation)
- EduVPN enables students, employees and researchers to connect securely and
- encrypted to the Internet from any standard device. EduVPN integrates with
- the institutional network so that internal ICT services can be made available
- in a secure manner.
- .
- This is the common documentation package.
-
 Package: lets-connect-client
+Conflicts: eduvpn-client
 Architecture: all
 Depends:
  ${misc:Depends},
