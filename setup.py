@@ -4,8 +4,9 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 from setuptools import setup, find_packages
+from sys import version_info
 
-__version__ = "1.0.3"
+__version__ = "1.1"
 
 
 install_requires = [
@@ -15,12 +16,11 @@ install_requires = [
     'future',
     'python-dateutil',
     'six',
-    'repoze.lru',
     'qrcode',
     'pillow',
     'cryptography',
-    'typing;python_version<"3.5"',
 ]
+
 
 # sometimes the dbus-python package is not properly registered, triggering a
 # reinstall and compile
@@ -31,22 +31,13 @@ extras_require = {
 }
 
 data_files = [
-    ('share/applications', ['share/applications/lets-connect-client.desktop']),
+    ('share/applications', ['share/applications/eduvpn-client.desktop']),
     ('share/eduvpn', [
         'share/eduvpn/eduvpn.png',
         'share/eduvpn/institute.png',
         'share/eduvpn/institute_small.png',
         'share/eduvpn/internet.png',
         'share/eduvpn/internet_small.png',
-    ]),
-    ('share/letsconnect', [
-        'share/letsconnect/connected.png',
-        'share/letsconnect/connecting.png',
-        'share/letsconnect/disconnected.png',
-        'share/letsconnect/fallback.png',
-        'share/letsconnect/settings_full.png',
-        'share/letsconnect/settings.png',
-        'share/letsconnect/tray.png',
     ]),
     ('share/eduvpn/builder', [
         'share/eduvpn/builder/2fa.ui',
@@ -65,15 +56,11 @@ data_files = [
     ('share/icons/hicolor/128x128/apps', ['share/icons/hicolor/128x128/apps/eduvpn-client.png']),
     ('share/icons/hicolor/256x256/apps', ['share/icons/hicolor/256x256/apps/eduvpn-client.png']),
     ('share/icons/hicolor/512x512/apps', ['share/icons/hicolor/512x512/apps/eduvpn-client.png']),
-    ('share/icons/hicolor/48x48/apps', ['share/icons/hicolor/48x48/apps/lets-connect-client.png']),
-    ('share/icons/hicolor/128x128/apps', ['share/icons/hicolor/128x128/apps/lets-connect-client.png']),
-    ('share/icons/hicolor/256x256/apps', ['share/icons/hicolor/256x256/apps/lets-connect-client.png']),
-    ('share/icons/hicolor/512x512/apps', ['share/icons/hicolor/512x512/apps/lets-connect-client.png']),
 ]
 
 
 setup(
-    name="lets_connect_client",
+    name="eduvpn_client",
     version=__version__,
     packages=find_packages(),
     data_files=data_files,
@@ -81,10 +68,10 @@ setup(
     extras_require=extras_require,
     author="Gijs Molenaar",
     author_email="gijs@pythonic.nl",
-    description="Let's Connect! client",
+    description="eduVPN client",
     license="GPL3",
     setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'mock'],
+    tests_require=['pytest'],
     test_suite="tests",
     keywords="vpn openvpn networking security",
     url="https://github.com/eduvpn/python-eduvpn-client",
@@ -93,20 +80,21 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: POSIX",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3 :: Only",
         "Topic :: System :: Operating System Kernels :: Linux",
         "Topic :: System :: Networking",
         "Environment :: X11 Applications",
-        ],
+    ],
     entry_points={
         'gui_scripts': [
-            'lets-connect-client = eduvpn.main:main_lets_connect',
+            'eduvpn-client = eduvpn.main:main_eduvpn',
         ]
-}
+    }
 )
